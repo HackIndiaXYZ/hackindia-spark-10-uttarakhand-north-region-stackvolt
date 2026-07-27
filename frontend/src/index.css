@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0a0b10;
+  --color-surface: #14161f;
+  --color-surface-2: #1c1f2b;
+  --color-surface-3: #262a3a;
+  --color-border: #2a2e3f;
+  --color-volt: #7c5cff;
+  --color-volt-soft: #a794ff;
+  --color-spark: #ffb020;
+  --color-text: #f3f4f8;
+  --color-text-muted: #9096a8;
+  --color-text-faint: #5b6178;
+  --color-success: #34d399;
+  --color-danger: #f87171;
+  --color-warning: #ffb020;
+
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+html, body, #root { height: 100%; }
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--color-volt); color: white; }
+
+@keyframes voltage-pulse {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.voltage-line {
+  height: 2px;
+  background-image: linear-gradient(90deg, transparent 0%, var(--color-volt) 45%, var(--color-spark) 50%, var(--color-volt) 55%, transparent 100%);
+  background-size: 200% 100%;
+  animation: voltage-pulse 2.4s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .voltage-line { animation: none; background-position: 0 0; }
+}
+
+* { scrollbar-color: var(--color-surface-3) transparent; scrollbar-width: thin; }
